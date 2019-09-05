@@ -1,19 +1,26 @@
 #!/usr/bin/env bash
 
+start_dir=$(pwd)
+
 tar -xzf $1 -C $2
 
 cd $2
 
-cd $2
+cd *
 
 grep -l "DELETE ME!" * | xargs rm -rf
 
-cd ..
+cd "$start_dir"
 
-cd ..
+var1=`basename $1`
 
-a='cleaned_'
-b="$a$2"
-c="$b.tgz"
+var2='cleaned_'
 
-tar -xzf $c $2
+var3="$var2$var1"
+
+echo $var3
+
+
+
+tar -czf $var3 $2 
+
